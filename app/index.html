@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VICE GRID — GTA-Style Cover Maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="mark">VICE GRID</span><span class="tag">multi-panel poster maker</span></div>
+  <div class="top-note">Your photo. Your caption. One poster.</div>
+</header>
+<main class="workbench">
+  <section class="controls" aria-label="Poster controls">
+    <div class="group" id="drop">
+      <label class="drop-label" for="upload">Drop photos here or <span class="linklike">choose files</span></label>
+      <input id="upload" type="file" accept="image/*" multiple>
+      <div class="tray" id="tray" aria-label="Your photos"></div>
+      <p class="hint">Click a photo to place it in the selected panel. The two samples are free to use.</p>
+    </div>
+
+    <div class="group">
+      <h2>Caption</h2>
+      <input id="caption" type="text" value="SUNSET HEIST" maxlength="24" aria-label="Caption">
+      <input id="sub" type="text" value="VICE CITY • 2026" maxlength="40" aria-label="Sub-caption">
+    </div>
+
+    <div class="group">
+      <h2>Look</h2>
+      <div class="row" id="looks">
+        <button type="button" data-v="sunset">Sunset Strip</button>
+        <button type="button" data-v="neon">Neon Night</button>
+        <button type="button" data-v="heat">Heat Wave</button>
+      </div>
+      <label class="slider-label" for="grade">Grade <span id="gradeVal">Golden hour</span></label>
+      <input id="grade" type="range" min="0" max="100" value="25" step="1">
+      <p class="hint">Slide from golden hour to neon night. The whole poster re-grades live.</p>
+    </div>
+
+    <div class="group">
+      <h2>Panel grid</h2>
+      <div class="row" id="layouts">
+        <button type="button" data-v="triple">Triple</button>
+        <button type="button" data-v="quad">Four</button>
+        <button type="button" data-v="strip">Strip</button>
+        <button type="button" data-v="hero">Hero</button>
+      </div>
+      <div class="row">
+        <button type="button" id="modeSwap" class="on">Swap panels</button>
+        <button type="button" id="modePan">Pan photo</button>
+      </div>
+      <p class="hint" id="modeHint">Drag a panel onto another to swap them. Click a photo in the tray to place it in the selected panel.</p>
+      <div class="row">
+        <button type="button" id="zoomOut">− Zoom</button>
+        <button type="button" id="zoomIn">+ Zoom</button>
+        <button type="button" id="resetPanel">Reset panel</button>
+      </div>
+      <p class="hint" id="panelLabel">Panel 1 of 3</p>
+    </div>
+
+    <div class="group">
+      <h2>Export</h2>
+      <div class="row" id="sizes">
+        <button type="button" data-v="square">1080×1080</button>
+        <button type="button" data-v="portrait">1080×1350</button>
+        <button type="button" data-v="wide">1920×1080</button>
+      </div>
+      <button type="button" id="exportBtn" class="export">Export PNG</button>
+      <p class="hint">The export renders the same poster you see, at full size, as a PNG.</p>
+    </div>
+  </section>
+
+  <section class="stage" aria-label="Poster preview">
+    <canvas id="preview" width="880" height="495"></canvas>
+    <p class="stage-note">Drag panels to remix the grid. Scroll over a panel to zoom its photo. Shortcuts: 1–4 switch layouts · L cycles looks · E exports.</p>
+  </section>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
